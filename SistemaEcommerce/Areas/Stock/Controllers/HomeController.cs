@@ -2,8 +2,9 @@
 using SistemaEcommerce.Modelos.ViewModels;
 using System.Diagnostics;
 
-namespace SistemaEcommerce.Controllers
+namespace SistemaEcommerce.Areas.Stock.Controllers
 {
+    [Area("Stock")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
