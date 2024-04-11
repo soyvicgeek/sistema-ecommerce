@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="d-flex justify-content-between">
+        <div>
+            <h2 class="text-primary">Lista de Bodegas</h2>
+        </div>
+        <div>
+            <a class="btn btn-outline-primary" asp-action="Upsert">
+                <i class="bi bi-plus-square p-1"></i>Crear nueva Bodega
+            </a>
+        </div>
+    </div>
+
+    <div class="p-4 border rounded bg-light">
+        <table id="tblDatos" class="table table-responsive table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/bodega.js"></script>
+}
