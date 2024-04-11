@@ -1,0 +1,94 @@
+﻿@model SistemaEcommerce.Modelos.Marca
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var titulo = "Crear Marca";
+}
+
+<!-- Creamos el  Formulario de envio de Información -->
+<form method="post">
+    <div style="padding-left:15%; padding-right:15%; padding-bottom:inherit.4rem;">
+        <div class="row border-0">
+            <div asp-validation-sumary="ModelOnly" class="text-danger">
+            </div>
+        </div>
+        @if (Model.Id != 0)
+        {
+            //Actualizar
+            titulo = "Actualizar Marca";
+            <input type="hidden" asp-for="Id" />
+        }
+        <!-- Mostramos el titulo de la pagina -->
+        <div class="col-12 border-bottom p-0">
+            <h2 class="text-primary">@titulo</h2>
+        </div>
+
+        <!-- Campo Nombre -->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Nombre</label>
+                <input type="text" asp-for="Nombre" class="form-control" placeholder="Nombre de la marca" id="nombre"/>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Campo Descripción -->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Descripción</label>
+                <input type="text" asp-for="Descripcion" class="form-control" placeholder="Descripción de la marca" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Campo Estado -->
+        <div class="row mb-2 mt-2">
+            <div class="form-group col-md-6">
+                <label>Estado</label>
+                <select class="form-control" asp-for="Estado">
+                    <option value="true">Activado</option>
+                    <option value="false">Desactivado</option>
+                </select>
+            </div>
+        </div>
+        <!-- Presentamos las vistas parciales -->
+        <br />
+        <div>
+            @if (Model.Id != 0)
+            {
+                <partial name="_BotonesActualizarYRegresar" model="Model.Id" />
+            }
+            else
+            {
+                <partial name="_BotonesCrearYRegresar" />
+            }
+        </div>
+
+    </div>
+</form>
+
+<!-- Configuramos por medio de un script al dom para que use los helper tags -->
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.getElementById("nombre").addEventListener('change', function () {
+            ValidarNombre();
+        });
+
+        function ValidarNombre() {
+            var url = '@Url.Content("~/")' + "Admin/Marca/ValidarNombre";
+            var id = '#id';
+            var nombre = '#nombre';
+
+            $.getJSON(url, { id: $(id).val(), nombre: $(nombre).val() }, function (data) {
+                $.each(data, function (key, value) {
+                    if (value) {
+                        var nombre = document.getElementById("nombre");
+                        swal("E R R O R", "Este Nombre ya Existe", "error");
+                        nombre.value = "";
+                    }
+                });
+            })
+        }
+    </script>
+}
