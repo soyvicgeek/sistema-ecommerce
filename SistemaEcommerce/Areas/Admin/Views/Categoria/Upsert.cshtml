@@ -1,7 +1,7 @@
-﻿@model SistemaEcommerce.Modelos.Bodega
+﻿@model SistemaEcommerce.Modelos.Categoria
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var titulo = "Crear Bodega";
+    var titulo = "Crear Categoría";
 }
 
 <!-- Creamos el  Formulario de envio de Información -->
@@ -14,7 +14,7 @@
         @if (Model.Id != 0)
         {
             //Actualizar
-            titulo = "Actualizar Bodega";
+            titulo = "Actualizar Categoría";
             <input type="hidden" asp-for="Id" />
         }
         <!-- Mostramos el titulo de la pagina -->
@@ -26,7 +26,7 @@
         <div class="row mb-2 mt-2">
             <div class="form-group col-md-6">
                 <label>Nombre</label>
-                <input type="text" asp-for="Nombre" class="form-control" placeholder="Nombre de la bodega" id="nombre"/>
+                <input type="text" asp-for="Nombre" class="form-control" placeholder="Nombre de la categoría" id="nombre"/>
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="row mb-2 mt-2">
             <div class="form-group col-md-6">
                 <label>Descripción</label>
-                <input type="text" asp-for="Descripcion" class="form-control" placeholder="Descripción de la bodega" />
+                <input type="text" asp-for="Descripcion" class="form-control" placeholder="Descripción de la categoría" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
         </div>
@@ -76,7 +76,7 @@
         });
 
         function ValidarNombre() {
-            var url = '@Url.Content("~/")' + "Admin/Bodega/ValidarNombre";
+            var url = '@Url.Content("~/")' + "Admin/Categoria/ValidarNombre";
             var id = '#id';
             var nombre = '#nombre';
 
