@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-SistemaEcommerce-93f4f82b-ddf0-4f46-a9c4-96f35e820203</UserSecretsId>
   </PropertyGroup>
