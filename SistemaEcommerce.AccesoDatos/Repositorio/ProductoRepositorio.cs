@@ -1,4 +1,5 @@
-﻿using SistemaEcommerce.AccesoDatos.Data;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using SistemaEcommerce.AccesoDatos.Data;
 using SistemaEcommerce.AccesoDatos.Repositorio.IRepositorio;
 using SistemaEcommerce.Modelos;
 using System;
@@ -39,6 +40,27 @@ namespace SistemaEcommerce.AccesoDatos.Repositorio
 
                 _db.SaveChanges();
             }
+        }
+
+        public IEnumerable<SelectListItem> ObtenerTodosDropDownList(string obj)
+        {
+            if (obj == "Categoria")
+            {
+                return _db.Categorias.Where(c => c.Estado == true).Select(c => new SelectListItem
+                {
+                    Text = c.Nombre,
+                    Value = c.Id.ToString()
+                });
+            }
+            if (obj == "Marca")
+            {
+                return _db.Marcas.Where(c => c.Estado == true).Select(c => new SelectListItem
+                {
+                    Text = c.Nombre,
+                    Value = c.Id.ToString()
+                });
+            }
+            return null;
         }
     }
 }
