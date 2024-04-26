@@ -2,11 +2,6 @@
 using SistemaEcommerce.AccesoDatos.Data;
 using SistemaEcommerce.AccesoDatos.Repositorio.IRepositorio;
 using SistemaEcommerce.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaEcommerce.AccesoDatos.Repositorio
 {
@@ -57,6 +52,14 @@ namespace SistemaEcommerce.AccesoDatos.Repositorio
                 return _db.Marcas.Where(c => c.Estado == true).Select(c => new SelectListItem
                 {
                     Text = c.Nombre,
+                    Value = c.Id.ToString()
+                });
+            }
+            if (obj == "Producto")
+            {
+                return _db.Productos.Where(c => c.Estado == true).Select(c => new SelectListItem
+                {
+                    Text = c.Descripcion,
                     Value = c.Id.ToString()
                 });
             }

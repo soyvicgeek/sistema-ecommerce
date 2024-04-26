@@ -7,10 +7,10 @@ $(document).ready(function () {
 function loadDataTable() {
     datable = $('#tblDatos').DataTable({
         "ajax": {
-            "url": "/admin/Producto/ObtenerTodos"
+            "url":"/admin/Producto/ObtenerTodos"
         },
         "columns": [
-            { "data": "numeroserie" },
+            { "data": "numeroSerie" },
             { "data": "descripcion" },
             { "data": "categoria.nombre" },
             { "data": "marca.nombre" },

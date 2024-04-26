@@ -70,10 +70,9 @@
                     <!--Lista Categoria-->
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Categoria</label>
+                            <label>Categoría</label>
                             <select asp-for="Producto.CategoriaId" asp-items="@Model.CategoriaLista" class="form-select">
                                 <option disabled selected>--Selecciona una Categoria--</option>
-
                             </select>
                             <span asp-validate-for="Producto.CategoriaId" class="text-danger"></span>
                         </div>
@@ -83,11 +82,32 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Marca</label>
-                            <select asp-for="Producto.CategoriaId" asp-items="@Model.MarcaLista" class="form-select">
+                            <select asp-for="Producto.MarcaId" asp-items="@Model.MarcaLista" class="form-select">
                                 <option disabled selected>--Selecciona una Marca--</option>
-
                             </select>
                             <span asp-validate-for="Producto.MarcaId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Lista Padre-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Producto Padre</label>
+                            <select asp-for="Producto.PadreId" asp-items="@Model.PadreLista" class="form-select">
+                                <option disabled selected>--Seleccione un producto Padre--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--Estado-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Estado</label>
+                            <select asp-for="Producto.Estado" class="form-select">
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                            </select>
+                            <span asp-validation-for="Producto.Estado" class="text-danger"></span>
                         </div>
                     </div>
 
